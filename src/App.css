@@ -139,6 +139,7 @@ body {
   padding: 1.5rem;
   background-color: var(--clr-dark-grayish-blue);
   border-radius: 1rem;
+  box-shadow: 1rem 0.5rem 3rem hsl(217, 24%, 15%);
 }
 
 .container > h1 {
