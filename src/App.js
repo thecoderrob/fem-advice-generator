@@ -14,13 +14,17 @@ const App = () => {
   const fetchAdvice = async () => {
     setIsLoading(true);
     const id = Math.ceil(Math.random() * 200);
-    const res = await fetch(`https://api.adviceslip.com/advice/${id}`);
-    const data = await res.json();
+    try {
+      const res = await fetch(`https://api.adviceslip.com/advice/${id}`);
+      const data = await res.json();
 
-    setAdvice({
-      id: data.slip.id,
-      advice: data.slip.advice,
-    });
+      setAdvice({
+        id: data.slip.id,
+        advice: data.slip.advice,
+      });
+    } catch (e) {
+      alert(e);
+    }
     setIsLoading(false);
   };
 
