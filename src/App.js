@@ -5,12 +5,14 @@ import "./App.css";
 import iconDice from "./assets/icon-dice.svg";
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [advice, setAdvice] = useState({
     id: null,
     advice: null,
   });
 
   const fetchAdvice = async () => {
+    setIsLoading(true);
     const id = Math.ceil(Math.random() * 200);
     const res = await fetch(`https://api.adviceslip.com/advice/${id}`);
     const data = await res.json();
@@ -19,6 +21,7 @@ const App = () => {
       id: data.slip.id,
       advice: data.slip.advice,
     });
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -29,7 +32,7 @@ const App = () => {
     <div className="App">
       <div className="container">
         <h1>Advice #{advice.id}</h1>
-        <p>{advice.advice}</p>
+        <p>{isLoading ? "Loading advice..." : advice.advice}</p>
         <picture>
           <source srcSet={dividerMobile} media="(max-width: 23.4375em)" />
           <img src={dividerDesktop} alt="" />
