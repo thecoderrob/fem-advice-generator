@@ -33,7 +33,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
+    <main className="App">
       <div className="container">
         <h1>Advice #{advice.id}</h1>
         <p>{isLoading ? "Loading advice..." : advice.advice}</p>
@@ -43,9 +43,10 @@ const App = () => {
         </picture>
         <button type="button" onClick={fetchAdvice}>
           <img src={iconDice} alt="" />
+          <span className="sr-only">Get advice</span>
         </button>
       </div>
-    </div>
+    </main>
   );
 };
 
